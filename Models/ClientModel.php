@@ -17,7 +17,19 @@ class ClientModel
 
     }
 
-    public function getClient() {
+    public function getClientById($id) {
+        return $id;
+    }
+
+    public function createClient() {
+
+    }
+
+    public function getClientProducts() {
+
+    }
+
+    public function addProduct() {
 
     }
 }

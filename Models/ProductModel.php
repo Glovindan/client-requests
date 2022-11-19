@@ -22,11 +22,15 @@ class ProductModel
 
     }
 
-    public function getClientProducts() {
+    public function getProductsByClientId() {
 
     }
 
-    public function getOneProduct() {
+    public function getProductById() {
+
+    }
+
+    public function createProduct() {
 
     }
 }
