@@ -11,8 +11,6 @@
     $productController = new ProductController(new ProductModel($db));
     $router = new Router();
 
-    echo $_SERVER["REQUEST_URI"]." ____________________ ";
-
     $router->get('/clients', array($clientController, "readAll"));
     $router->get('/clients/:id/products/:fuck', array($clientController, "readAll"));
     $router->post('/clients', array($clientController, "create"));

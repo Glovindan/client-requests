@@ -8,7 +8,7 @@ class ClientController
     }
 
     public function create($params) {
-//        print_r($params);
+        print_r($params);
     }
 
     public function read($params) {
@@ -21,10 +21,10 @@ class ClientController
     }
 
     public function update($params) {
-//        print_r($params);
+        print_r($params);
     }
 
     public function delete($params) {
-//        print_r($params);
+        print_r($params);
     }
 }

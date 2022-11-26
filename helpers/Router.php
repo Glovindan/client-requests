@@ -38,8 +38,6 @@ class Router {
 
         foreach ($serverUriExplode as $index => $item) {
             if(!preg_match("#$uriRegex[$index]#", $item)) {
-                print_r($uriRegex);
-                print_r($serverUriExplode);
                 return false;
             }
         }
