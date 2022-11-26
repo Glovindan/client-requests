@@ -22,14 +22,28 @@ class Router {
     public function delete($uri, $callback) {
         if($_SERVER["REQUEST_METHOD"] == "DELETE" && $this->matchUri($uri)) {
             call_user_func($callback, $this->getParams($uri));
-//            return $callback;
+            return $callback;
         }
     }
 
-    private function matchUri($uri) {
-        $uriRegex = preg_replace("#/:.+?/#", "/.+?/", trim($uri, "/")."/");
-        echo "#^$uriRegex$#";
-        return preg_match("#^$uriRegex$#", trim($_SERVER["REQUEST_URI"],"/")."/");
+    private function matchUri($uri): bool
+    {
+        $uriExplode = explode("/", trim($uri, "/"));
+        $serverUriExplode = explode("/", trim($_SERVER["REQUEST_URI"], "/"));
+        if(count($serverUriExplode) != count($uriExplode)) {
+            return false;
+        }
+
+        $uriRegex = preg_replace("#^:.+$#", "^.+$", $uriExplode);
+
+        foreach ($serverUriExplode as $index => $item) {
+            if(!preg_match("#$uriRegex[$index]#", $item)) {
+                print_r($uriRegex);
+                print_r($serverUriExplode);
+                return false;
+            }
+        }
+        return true;
     }
 
     private function getParams($uri): array
@@ -47,7 +61,7 @@ class Router {
     }
 
     private function getBody() {
-
+        // Получить тело
     }
 
     private function route($uri, $callback) {
