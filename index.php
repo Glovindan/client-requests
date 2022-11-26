@@ -11,16 +11,16 @@
     $productController = new ProductController(new ProductModel($db));
     $router = new Router();
 
-    $router->get('/clients', $clientController->readAll());
-    $router->post('/clients', $clientController->create());
+    $router->get('/clients', array($clientController, "readAll"));
+    $router->post('/clients', array($clientController, "create"));
 
-    $router->get('/clients/$id', $clientController->read(100));
-    $router->put('/clients/$id', $clientController->update());
-    $router->delete('/clients/$id', $clientController->delete());
+    $router->get('/clients/:id', array($clientController, "read"));
+    $router->put('/clients/:id', array($clientController, "update"));
+    $router->delete('/clients/:id', array($clientController, "delete"));
 
-    $router->get('/products', $productController->readAll());
-    $router->post('/products', $productController->create());
+    $router->get('/products', array($productController, "readAll"));
+    $router->post('/products', array($productController, "create"));
 
-    $router->get('/products/$id', $productController->read(100));
-    $router->put('/products/$id', $productController->update());
-    $router->delete('/products/$id', $productController->delete());
+    $router->get('/products/:id', array($productController, "read"));
+    $router->put('/products/:id', array($productController, "update"));
+    $router->delete('/products/:id', array($productController, "delete"));

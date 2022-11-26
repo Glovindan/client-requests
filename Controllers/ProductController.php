@@ -7,23 +7,23 @@ class ProductController
         $this->model = $model;
     }
 
-    public function create($body) {
+    public function create($params) {
 
     }
 
-    public function read($id) {
-        return $this->model->getProductById($id);
+    public function read($params) {
+        return $this->model->getProductById($params->id);
     }
 
-    public function readAll() {
-
-    }
-
-    public function update() {
+    public function readAll($params) {
 
     }
 
-    public function delete() {
+    public function update($params) {
+
+    }
+
+    public function delete($params) {
 
     }
 }
