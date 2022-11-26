@@ -8,23 +8,23 @@ class ClientController
     }
 
     public function create($params) {
-        echo "create Client";
+        print_r($params);
     }
 
     public function read($params) {
-        echo "read Client";
-        return $this->model->getClientById($params->id);
+        print_r($params);
+        return $this->model->getClientById($params["id"]);
     }
 
     public function readAll($params) {
-
+        print_r($params);
     }
 
     public function update($params) {
-
+        print_r($params);
     }
 
     public function delete($params) {
-
+        print_r($params);
     }
 }

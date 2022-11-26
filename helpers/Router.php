@@ -3,7 +3,7 @@
 class Router {
     public function get($uri, $callback) {
         if($_SERVER["REQUEST_METHOD"] == "GET" && $this->matchUri($uri)) {
-            $callback();
+            call_user_func($callback, $this->getParams($uri));
         }
     }
 
@@ -21,12 +21,14 @@ class Router {
 
     public function delete($uri, $callback) {
         if($_SERVER["REQUEST_METHOD"] == "DELETE" && $this->matchUri($uri)) {
-            return $callback;
+            call_user_func($callback, $this->getParams($uri));
+//            return $callback;
         }
     }
 
     private function matchUri($uri) {
         $uriRegex = preg_replace("#/:.+?/#", "/.+?/", trim($uri, "/")."/");
+        echo "#^$uriRegex$#";
         return preg_match("#^$uriRegex$#", trim($_SERVER["REQUEST_URI"],"/")."/");
     }
 
@@ -37,7 +39,7 @@ class Router {
         $params = [];
         foreach ($uriExplode as $index => $item) {
             if(preg_match("#^:.+$#",$item)) {
-                $params[$item] = $serverUriExplode[$index];
+                $params += [trim($item,":") => $serverUriExplode[$index]];
             }
         }
 

@@ -12,6 +12,7 @@
     $router = new Router();
 
     $router->get('/clients', array($clientController, "readAll"));
+    $router->get('/clients/:id/products/:fuck', array($clientController, "readAll"));
     $router->post('/clients', array($clientController, "create"));
 
     $router->get('/clients/:id', array($clientController, "read"));
